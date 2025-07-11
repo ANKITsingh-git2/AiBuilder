@@ -144,7 +144,7 @@ The project includes several utility scripts to help with development:
 
 ### Environment Variables
 
-Create a `.env` file in the root directory for Google AI API key:
+Create a `.env` file in the server directory for Google AI API key:
 
 ```env
 GOOGLE_AI_API_KEY=your_api_key_here
