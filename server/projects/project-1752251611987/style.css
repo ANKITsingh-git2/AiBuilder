@@ -1,0 +1,84 @@
+/*
+  This file is for custom CSS that complements Tailwind CSS.
+  Primarily used for @keyframes for more complex animations.
+*/
+
+/* Base styles and variables for Tailwind's JIT mode */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations using @keyframes */
+.fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+/* Specific styles for completed tasks transition */
+.task-completed .task-text {
+    text-decoration: line-through;
+    color: theme('colors.textMuted');
+    transition: all 0.3s ease-in-out;
+}
+
+.task-completed .checkbox-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.task-pending .checkbox-icon {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* Custom checkbox styling for better visual feedback */
+.custom-checkbox {
+    @apply relative w-5 h-5 rounded-md border-2 border-slate-500 bg-slate-700 cursor-pointer flex items-center justify-center transition-all duration-200;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    @apply absolute opacity-0 w-full h-full cursor-pointer;
+    z-index: 1; /* Ensure it's clickable */
+}
+
+/* Icon for checked state */
+.checkbox-icon {
+    @apply text-primary opacity-0 transform scale-0 transition-all duration-200 ease-out;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-icon {
+    @apply opacity-100 scale-100;
+}
+
+.custom-checkbox:hover {
+    @apply border-primary;
+}
+
+.custom-checkbox input[type="checkbox"]:focus + .checkbox-icon {
+    box-shadow: 0 0 0 3px theme('colors.primary', '0.5'); /* Custom focus ring */
+}
+
+/* Style for active filter button */
+.filter-btn.active {
+    @apply bg-primary text-textLight;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3); /* Subtle shadow for active filter */
+    transform: translateY(-1px);
+}
+.filter-btn:not(.active):hover {
+    @apply text-textLight;
+}
+
+/* Ensure focus-visible is used for accessibility */
+*:focus-visible {
+    outline: 2px solid theme('colors.accent'); /* A distinct accent color for focus */
+    outline-offset: 3px;
+}
+
+/* Enhance form input focus */
+input[type="text"]:focus {
+    box-shadow: 0 0 0 3px theme('colors.primary', '0.5'); /* Custom focus ring */
+    border-color: theme('colors.primary');
+}

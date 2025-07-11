@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern, responsive, and interactive To-Do List application built with semantic HTML5, Tailwind CSS, and Vanilla JavaScript. Manage your tasks efficiently.">
+    <meta name="keywords" content="to-do list, task manager, static website, responsive design, vanilla javascript, tailwind css, web development, productivity">
+    <meta name="author" content="Your Name">
+    <title>Modern To-Do List</title>
+
+    <!-- Preconnect to Google Fonts and CDN for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts - Poppins for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1', // Indigo-500
+                        secondary: '#4f46e5', // Indigo-600
+                        background: '#0f172a', // Slate-900
+                        card: '#1e293b', // Slate-800
+                        textLight: '#f8fafc', // Slate-50
+                        textMuted: '#94a3b8', // Slate-400
+                        accent: '#a855f7', // Purple-500
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeOut: {
+                            '0%': { opacity: '1', transform: 'translateY(0)' },
+                            '100%': { opacity: '0', transform: 'translateY(10px)' },
+                        },
+                        pulseBg: {
+                            '0%, 100%': { backgroundColor: 'var(--tw-card)' },
+                            '50%': { backgroundColor: 'var(--tw-background)' },
+                        }
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 0.3s ease-out forwards',
+                        fadeOut: 'fadeOut 0.3s ease-out forwards',
+                        pulseBg: 'pulseBg 1s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Custom CSS for specific animations -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-background to-slate-950 min-h-screen flex flex-col items-center justify-center py-12 px-4 text-textLight font-sans">
+    <main class="w-full max-w-md bg-card shadow-2xl rounded-2xl p-8 transform transition-all duration-300 hover:shadow-primary/30">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl sm:text-5xl font-heading font-bold text-primary mb-2">My Tasks</h1>
+            <p class="text-textMuted text-lg">Stay organized and productive.</p>
+        </header>
+
+        <section aria-labelledby="add-task-heading" class="mb-8">
+            <h2 id="add-task-heading" class="sr-only">Add New Task</h2>
+            <form id="task-form" class="flex flex-col sm:flex-row gap-4 mb-4">
+                <div class="relative flex-grow">
+                    <input
+                        type="text"
+                        id="task-input"
+                        class="w-full bg-slate-700 text-textLight border border-slate-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition duration-200 shadow-md placeholder-textMuted"
+                        placeholder="What needs to be done?"
+                        aria-label="New task description"
+                    >
+                    <span id="input-error" class="absolute left-0 -bottom-6 text-red-400 text-sm opacity-0 transition-opacity duration-200"></span>
+                </div>
+                <button
+                    type="submit"
+                    class="bg-primary hover:bg-secondary text-textLight font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-card"
+                    aria-label="Add task"
+                >
+                    Add Task
+                </button>
+            </form>
+        </section>
+
+        <section aria-labelledby="task-filters-heading" class="mb-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <h2 id="task-filters-heading" class="sr-only">Task Filters and Actions</h2>
+            <div role="group" aria-label="Task filters" class="flex gap-2 bg-slate-700 p-1 rounded-lg shadow-inner">
+                <button data-filter="all" class="filter-btn bg-primary text-textLight px-4 py-2 rounded-md font-medium text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50">All</button>
+                <button data-filter="active" class="filter-btn text-textMuted hover:bg-slate-600 px-4 py-2 rounded-md font-medium text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50">Active</button>
+                <button data-filter="completed" class="filter-btn text-textMuted hover:bg-slate-600 px-4 py-2 rounded-md font-medium text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50">Completed</button>
+            </div>
+            <button id="clear-completed-btn" class="text-textMuted hover:text-red-400 font-medium text-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-400/50">Clear Completed</button>
+        </section>
+
+        <section aria-labelledby="task-list-heading">
+            <h2 id="task-list-heading" class="sr-only">Your To-Do List</h2>
+            <ul id="task-list" class="space-y-4">
+                <!-- Task items will be dynamically inserted here by JavaScript -->
+            </ul>
+            <div id="no-tasks-message" class="text-center text-textMuted py-8 hidden">
+                <p class="text-lg">No tasks found. Time to add some! 🎉</p>
+            </div>
+        </section>
+
+        <footer class="mt-8 pt-6 border-t border-slate-700 text-center text-textMuted text-sm">
+            <p><span id="active-tasks-count" class="font-semibold text-primary">0</span> tasks remaining</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

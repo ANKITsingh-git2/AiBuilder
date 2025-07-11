@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+    <meta name="description" content="A modern, responsive, and interactive calculator built with HTML, Tailwind CSS, and Vanilla JavaScript.">
+    <meta name="keywords" content="calculator, web app, HTML, CSS, JavaScript, Tailwind CSS, responsive, modern, interactive">
+    <meta name="author" content="Your Name">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Poppins & Roboto Mono for numbers -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-poppins bg-gradient-to-br from-gray-900 to-gray-700 min-h-screen flex items-center justify-center p-4 antialiased">
+
+    <main class="calculator bg-gray-800 rounded-3xl shadow-2xl overflow-hidden max-w-sm w-full transition-all duration-300 ease-in-out transform hover:scale-[1.01]" aria-label="Calculator application">
+        <section class="display p-6 text-right relative overflow-hidden">
+            <div class="previous-operand text-gray-400 text-2xl mb-1 h-8 opacity-75 truncate" aria-live="polite"></div>
+            <div class="current-operand text-white text-5xl font-bold font-mono h-16 flex items-center justify-end truncate" aria-live="assertive">0</div>
+        </section>
+
+        <section class="buttons grid grid-cols-4 gap-3 p-6 pt-0">
+            <button class="span-2 btn-clear text-xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-action="clear" aria-label="Clear calculator">AC</button>
+            <button class="btn-delete text-xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-action="delete" aria-label="Delete last digit">DEL</button>
+            <button class="btn-operator text-xl bg-purple-600 text-white hover:bg-purple-500 active:bg-purple-700" data-action="divide" aria-label="Divide">/</button>
+
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="7" aria-label="Seven">7</button>
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="8" aria-label="Eight">8</button>
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="9" aria-label="Nine">9</button>
+            <button class="btn-operator text-xl bg-purple-600 text-white hover:bg-purple-500 active:bg-purple-700" data-action="multiply" aria-label="Multiply">*</button>
+
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="4" aria-label="Four">4</button>
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="5" aria-label="Five">5</button>
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="6" aria-label="Six">6</button>
+            <button class="btn-operator text-xl bg-purple-600 text-white hover:bg-purple-500 active:bg-purple-700" data-action="subtract" aria-label="Subtract">-</button>
+
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="1" aria-label="One">1</button>
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="2" aria-label="Two">2</button>
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="3" aria-label="Three">3</button>
+            <button class="btn-operator text-xl bg-purple-600 text-white hover:bg-purple-500 active:bg-purple-700" data-action="add" aria-label="Add">+</button>
+
+            <button class="span-2 btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="0" aria-label="Zero">0</button>
+            <button class="btn-number text-2xl bg-gray-700 text-gray-200 hover:bg-gray-600 active:bg-gray-500" data-number="." aria-label="Decimal point">.</button>
+            <button class="btn-equals text-xl bg-gradient-to-tr from-purple-500 to-indigo-700 text-white hover:from-purple-400 hover:to-indigo-600 active:from-purple-600 active:to-indigo-800" data-action="equals" aria-label="Equals">=</button>
+        </section>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

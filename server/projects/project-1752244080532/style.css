@@ -1,0 +1,55 @@
+/* Custom Styles and Tailwind Overrides */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto+Mono:wght@400;700&display=swap');
+
+/* Basic resets and font declarations for Tailwind to pick up */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.font-mono {
+    font-family: 'Roboto Mono', monospace;
+}
+
+/* Calculator specific styles */
+.calculator {
+    min-width: 320px; /* Base width for mobile-first */
+    max-width: 400px; /* Max width for larger screens */
+    width: 100%; /* Ensure it takes full width within max-width */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+}
+
+/* Button common styles */
+.buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 0; /* Adjust padding for height */
+    border-radius: 9999px; /* Fully rounded buttons */
+    font-weight: 600;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth, slightly bouncy transition */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12); /* Subtle button shadow */
+    user-select: none; /* Prevent text selection */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+.buttons button:active {
+    transform: scale(0.95); /* Shrink on click */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3); /* Inner shadow on active */
+}
+
+/* Specific button overrides */
+.span-2 {
+    grid-column: span 2 / span 2;
+}
+
+/* Adjust padding for different screen sizes for better responsiveness */
+@media (min-width: 640px) { /* sm breakpoint in Tailwind */
+    .buttons button {
+        padding: 1.5rem 0; /* Slightly larger buttons on tablet/desktop */
+    }
+}
