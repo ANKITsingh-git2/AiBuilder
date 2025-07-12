@@ -113,11 +113,11 @@ function App() {
   const reconnectTimeout = useRef<NodeJS.Timeout | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const apiUrl = 'http://aibuilder-1.onrender.com'
+  const apiUrl = 'https://aibuilder-1.onrender.com'
 
   const connectWebSocket = () => {
     try {
-      const wsUrl = 'ws://aibuilder-1.onrender.com'
+      const wsUrl = 'wss://aibuilder-1.onrender.com'
 
       ws.current = new WebSocket(wsUrl);
 
