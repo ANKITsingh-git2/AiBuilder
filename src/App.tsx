@@ -113,15 +113,11 @@ function App() {
   const reconnectTimeout = useRef<NodeJS.Timeout | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const apiUrl = window.location.protocol === 'https:' 
-    ? `https://${window.location.host.replace(':3000', ':3001')}`
-    : `http://${window.location.hostname}:3001`;
+  const apiUrl = 'http://aibuilder-1.onrender.com'
 
   const connectWebSocket = () => {
     try {
-      const wsUrl = window.location.protocol === 'https:' 
-        ? `wss://${window.location.host.replace(':3000', ':3001')}`
-        : `ws://${window.location.hostname}:3001`;
+      const wsUrl = 'ws://aibuilder-1.onrender.com'
 
       ws.current = new WebSocket(wsUrl);
 
