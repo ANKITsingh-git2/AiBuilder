@@ -181,7 +181,7 @@ GOOGLE_AI_API_KEY=your_api_key_here
 1. **Describe Your Website**: Enter a detailed description of the website you want to create
 2. **Watch the Build**: See real-time progress as your website is generated
 3. **Download**: Once complete, download your website as a ZIP file
-4. **View History**: Access all your previous projects
+4. **View History**: Access all your previous projects.
 
 ## 🤝 Contributing
 
